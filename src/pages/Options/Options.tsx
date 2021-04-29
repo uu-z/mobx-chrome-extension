@@ -1,12 +1,22 @@
+import { ChakraProvider, Container, CSSReset } from '@chakra-ui/react';
 import React from 'react';
-import './Options.css';
+import { theme } from '../../lib/theme';
+import { Router } from 'react-chrome-extension-router';
+import { Header } from '../../component/Header';
+import { Home } from '../../containers/Home';
 
-interface Props {
-  title: string;
-}
-
-const Options: React.FC<Props> = ({ title }: Props) => {
-  return <div className="OptionsContainer">{title.toUpperCase()} PAGE</div>;
+const Options = () => {
+  return (
+    <ChakraProvider theme={theme}>
+      <CSSReset />
+      <Header />
+      <Container maxW="7xl" p="4">
+        <Router>
+          <Home />
+        </Router>
+      </Container>
+    </ChakraProvider>
+  );
 };
 
 export default Options;
